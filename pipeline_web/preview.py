@@ -56,13 +56,12 @@ def preview_template_tree_with_schemes(template_source, template_id, version, sc
     constants_not_referred = {}
     custom_constants = {}
     for key, value in template_constants.items():
-        if value["show_type"] == "show":
+        if value["show_type"] == "show" and key not in pipeline_tree["constants"]:
             if value["source_type"] == "custom":
                 custom_constants[key] = value
                 continue
 
-            if key not in pipeline_tree["constants"]:
-                constants_not_referred[key] = value
+            constants_not_referred[key] = value
 
     # 添加outputs返回
     template_outputs = template.get_outputs(version)
