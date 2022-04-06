@@ -146,8 +146,10 @@ MIDDLEWARE += (
     "django_prometheus.middleware.PrometheusAfterMiddleware",
     "apigw_manager.apigw.authentication.ApiGatewayJWTGenericMiddleware",  # JWT 认证
     "apigw_manager.apigw.authentication.ApiGatewayJWTAppMiddleware",  # JWT 透传的应用信息
-    "gcloud.apigw.middlewares.CustomApiGatewayJWTUserMiddleware",  # JWT 透传的用户信息
+    "apigw_manager.apigw.authentication.ApiGatewayJWTUserMiddleware",  # JWT 透传的用户信息
 )
+
+AUTHENTICATION_BACKENDS += ("apigw_manager.apigw.authentication.UserModelBackend",)
 
 if env.IS_OPEN_V3:
     BK_APIGW_NAME = BK_APP_CODE = os.getenv("BKPAAS_APP_ID")
