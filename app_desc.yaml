@@ -227,7 +227,7 @@ modules:
               - bk_app_code: "bk_sops"
                 module_name: "callback"
               - bk_app_code: "bk_sops"
-                  module_name: "api"
+                module_name: "api"
     api:
         is_default: False
         language: Python
@@ -274,4 +274,4 @@ modules:
               - bk_app_code: "bk_sops"
                 module_name: "callback"
               - bk_app_code: "bk_sops"
-                  module_name: "api"
+                module_name: "api"
