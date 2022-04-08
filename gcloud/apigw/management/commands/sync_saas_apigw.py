@@ -37,7 +37,7 @@ class Command(BaseCommand):
         print("[bk-sops]call sync_apigw_resources with resources: %s" % resources_file_path)
         call_command("sync_apigw_resources", file=resources_file_path)
 
-        print("[mock-cmdb]call sync_resource_docs_by_archive with definition: %s" % definition_file_path)
+        print("[bk-sops]call sync_resource_docs_by_archive with definition: %s" % definition_file_path)
         call_command("sync_resource_docs_by_archive", file=definition_file_path)
 
         print("[bk-sops]call fetch_apigw_public_key")
