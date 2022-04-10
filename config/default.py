@@ -166,7 +166,7 @@ if env.IS_OPEN_V3:
     BK_APIGW_CALLBACK_SERVER_HOST = callback_host.netloc
     BK_APIGW_CALLBACK_SERVER_SUB_PATH = callback_host.path.lstrip("/")
 
-    BK_APIGW_RESOURCE_DOCS_BASE_DIR = os.path.join(BASE_DIR, "docs", "apidoc")
+    BK_APIGW_RESOURCE_DOCS_ARCHIVE_FILE = os.path.join(BASE_DIR, "gcloud", "apigw", "docs", "apigw-docs.tgz")
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = ()
