@@ -10,15 +10,3 @@ Unless required by applicable law or agreed to in writing, software distributed 
 an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
 specific language governing permissions and limitations under the License.
 """
-
-import logging
-
-from django.apps import AppConfig
-
-logger = logging.getLogger("root")
-
-
-class ApiConfig(AppConfig):
-    name = "gcloud.apigw"
-    verbose_name = "GcloudApigw"
-    label = "gcloud_apigw"
