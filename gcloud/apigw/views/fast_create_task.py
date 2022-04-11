@@ -18,7 +18,7 @@ from django.views.decorators.http import require_POST
 from blueapps.account.decorators import login_exempt
 from pipeline.exceptions import PipelineException
 from gcloud import err_code
-from gcloud.apigw.decorators import mark_request_whether_is_trust
+from gcloud.apigw.decorators import mark_request_whether_is_trust, return_json_response
 from gcloud.apigw.decorators import project_inject
 from gcloud.constants import ONETIME
 from gcloud.constants import TASK_CATEGORY
@@ -41,6 +41,7 @@ from apigw_manager.apigw.decorators import apigw_require
 @csrf_exempt
 @require_POST
 @apigw_require
+@return_json_response
 @mark_request_whether_is_trust
 @project_inject
 @request_validate(FastCreateTaskValidator)

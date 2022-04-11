@@ -25,7 +25,7 @@ from blueapps.account.decorators import login_exempt
 from gcloud import err_code
 from gcloud.constants import NON_COMMON_TEMPLATE_TYPES
 from gcloud.core.models import EngineConfig
-from gcloud.apigw.decorators import mark_request_whether_is_trust
+from gcloud.apigw.decorators import mark_request_whether_is_trust, return_json_response
 from gcloud.apigw.decorators import project_inject
 from gcloud.apigw.schemas import APIGW_CREATE_TASK_PARAMS
 from gcloud.common_template.models import CommonTemplate
@@ -65,6 +65,7 @@ def get_exclude_nodes_by_execute_nodes(execute_nodes, template):
 @csrf_exempt
 @require_POST
 @apigw_require
+@return_json_response
 @mark_request_whether_is_trust
 @project_inject
 @request_validate(CreateTaskValidator)

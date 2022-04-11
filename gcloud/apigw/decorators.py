@@ -53,6 +53,27 @@ def _get_project_scope_from_request(request):
     return obj_scope
 
 
+def return_json_response(view_func):
+    """
+    将返回的dict数据转为JsonResponse
+    @param view_func:
+    @return:
+    """
+
+    @wraps(view_func, assigned=available_attrs(view_func))
+    def _wrapped_view(request, *args, **kwargs):
+        result = view_func(request, *args, **kwargs)
+
+        # 如果返回的是dict且request中有trace_id，则在响应中加上
+        if isinstance(result, dict):
+            if hasattr(request, "trace_id"):
+                result["trace_id"] = request.trace_id
+            result = JsonResponse(result)
+        return result
+
+    return _wrapped_view
+
+
 def project_inject(view_func):
     @wraps(view_func, assigned=available_attrs(view_func))
     def wrapper(request, *args, **kwargs):

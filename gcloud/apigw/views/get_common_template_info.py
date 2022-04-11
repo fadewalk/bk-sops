@@ -16,7 +16,7 @@ from django.views.decorators.http import require_GET
 
 from blueapps.account.decorators import login_exempt
 from gcloud import err_code
-from gcloud.apigw.decorators import mark_request_whether_is_trust
+from gcloud.apigw.decorators import mark_request_whether_is_trust, return_json_response
 from gcloud.common_template.models import CommonTemplate
 from gcloud.apigw.views.utils import format_template_data
 from gcloud.iam_auth.intercept import iam_intercept
@@ -27,6 +27,7 @@ from apigw_manager.apigw.decorators import apigw_require
 @login_exempt
 @require_GET
 @apigw_require
+@return_json_response
 @mark_request_whether_is_trust
 @iam_intercept(CommonFlowViewInterceptor())
 def get_common_template_info(request, template_id):

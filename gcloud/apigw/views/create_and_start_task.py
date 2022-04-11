@@ -34,7 +34,7 @@ from gcloud.utils.decorators import request_validate
 from gcloud.iam_auth.intercept import iam_intercept
 from gcloud.tasktmpl3.models import TaskTemplate
 from gcloud.contrib.operate_record.decorators import record_operation
-from gcloud.apigw.decorators import mark_request_whether_is_trust
+from gcloud.apigw.decorators import mark_request_whether_is_trust, return_json_response
 from gcloud.utils.throttle import check_task_operation_throttle
 from gcloud.apigw.decorators import project_inject
 from apigw_manager.apigw.decorators import apigw_require
@@ -47,6 +47,7 @@ from gcloud.contrib.operate_record.constants import RecordType, OperateType, Ope
 @csrf_exempt
 @require_POST
 @apigw_require
+@return_json_response
 @mark_request_whether_is_trust
 @project_inject
 @request_validate(CreateTaskValidator)

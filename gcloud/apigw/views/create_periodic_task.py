@@ -19,7 +19,7 @@ from django.views.decorators.http import require_POST
 import env
 from blueapps.account.decorators import login_exempt
 from gcloud import err_code
-from gcloud.apigw.decorators import mark_request_whether_is_trust
+from gcloud.apigw.decorators import mark_request_whether_is_trust, return_json_response
 from gcloud.apigw.decorators import project_inject
 from gcloud.apigw.schemas import APIGW_CREATE_PERIODIC_TASK_PARAMS
 from gcloud.common_template.models import CommonTemplate
@@ -43,6 +43,7 @@ from pipeline_web.preview_base import PipelineTemplateWebPreviewer
 @csrf_exempt
 @require_POST
 @apigw_require
+@return_json_response
 @mark_request_whether_is_trust
 @project_inject
 @request_validate(CreatePriodicTaskValidator)

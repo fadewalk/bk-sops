@@ -16,7 +16,7 @@ from django.views.decorators.http import require_GET
 
 from blueapps.account.decorators import login_exempt
 from gcloud import err_code
-from gcloud.apigw.decorators import mark_request_whether_is_trust
+from gcloud.apigw.decorators import mark_request_whether_is_trust, return_json_response
 from gcloud.apigw.decorators import project_inject
 from gcloud.common_template.models import CommonTemplate
 from gcloud.constants import PROJECT
@@ -33,6 +33,7 @@ from apigw_manager.apigw.decorators import apigw_require
 @login_exempt
 @require_GET
 @apigw_require
+@return_json_response
 @mark_request_whether_is_trust
 @project_inject
 @iam_intercept(ProjectViewInterceptor())

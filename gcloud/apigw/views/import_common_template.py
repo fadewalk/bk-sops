@@ -19,7 +19,7 @@ from django.views.decorators.http import require_POST
 
 from blueapps.account.decorators import login_exempt
 from gcloud import err_code
-from gcloud.apigw.decorators import mark_request_whether_is_trust
+from gcloud.apigw.decorators import mark_request_whether_is_trust, return_json_response
 from gcloud.common_template.models import CommonTemplate
 from gcloud.template_base.utils import read_encoded_template_data
 from gcloud.apigw.views.utils import logger
@@ -30,6 +30,7 @@ from apigw_manager.apigw.decorators import apigw_require
 @csrf_exempt
 @require_POST
 @apigw_require
+@return_json_response
 @mark_request_whether_is_trust
 def import_common_template(request):
     if not request.is_trust:

@@ -17,7 +17,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from blueapps.account.decorators import login_exempt
 from gcloud import err_code
-from gcloud.apigw.decorators import mark_request_whether_is_trust
+from gcloud.apigw.decorators import mark_request_whether_is_trust, return_json_response
 from gcloud.apigw.decorators import project_inject
 from gcloud.constants import COMMON
 from gcloud.apigw.views.utils import logger
@@ -32,6 +32,7 @@ from pipeline_web.preview import preview_template_tree
 @csrf_exempt
 @require_POST
 @apigw_require
+@return_json_response
 @mark_request_whether_is_trust
 @project_inject
 @iam_intercept(CommonFlowViewInterceptor())
